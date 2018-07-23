@@ -33,6 +33,10 @@ public class Store {
     @Column(length = 255)
     private String telephone;
 
+    // 사용여부
+    @Column
+    private int enabled;
+
     // 등록일시
     @Column
     private Date regist_datetime;
@@ -86,6 +90,14 @@ public class Store {
         this.telephone = telephone;
     }
 
+    public int getEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(int enabled) {
+        this.enabled = enabled;
+    }
+
     @JsonSerialize(using = JsonDateTimeSerializer.class)
     public Date getRegist_datetime() {
         return regist_datetime;
@@ -109,8 +121,8 @@ public class Store {
                 ", store_name='" + store_name + '\'' +
                 ", email='" + email + '\'' +
                 ", telephone='" + telephone + '\'' +
+                ", enabled=" + enabled +
                 ", regist_datetime=" + regist_datetime +
-                ", format=" + format +
                 '}';
     }
 
