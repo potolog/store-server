@@ -7,6 +7,7 @@ import javax.persistence.*;
 import java.text.SimpleDateFormat;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "store")
@@ -18,8 +19,11 @@ public class Store {
     private Long id;
 
     // 상점코드
+//  @GeneratedValue(strategy = GenerationType.IDENTITY)
+//  @OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "store")
     @Column(length = 50, unique = true, nullable = false)
     private String store_id;
+//  private List<Menu> store_id;
 
     // 상점명
     @Column(length = 50, nullable = false)
@@ -44,6 +48,8 @@ public class Store {
     @Transient
     private final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
+    /*
+
     public Long getId() {
         return id;
     }
@@ -55,12 +61,6 @@ public class Store {
     public String getStore_id() {
         return store_id;
     }
-
-    /*
-    @OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL)
-    @JoinColumn(name="menu_id")
-    private Collection<Menu> menu;
-    */
 
     public void setStore_id(String store_id) {
         this.store_id = store_id;
@@ -117,7 +117,7 @@ public class Store {
     public String toString() {
         return "Store{" +
                 "id=" + id +
-                ", store_id='" + store_id + '\'' +
+        //      ", store_id='" + store_id + '\'' +
                 ", store_name='" + store_name + '\'' +
                 ", email='" + email + '\'' +
                 ", telephone='" + telephone + '\'' +
@@ -125,5 +125,7 @@ public class Store {
                 ", regist_datetime=" + regist_datetime +
                 '}';
     }
+
+    */
 
 }
