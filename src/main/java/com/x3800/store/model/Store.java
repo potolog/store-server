@@ -5,6 +5,7 @@ import com.x3800.store.serializer.JsonDateTimeSerializer;
 
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -14,15 +15,15 @@ import java.util.List;
 public class Store {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(updatable = false)
-    private Long id;
+//  @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "store_id", length = 50, updatable = false)
+    private String store_id;
 
     // 상점코드
 //  @GeneratedValue(strategy = GenerationType.IDENTITY)
 //  @OneToMany(fetch=FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "store")
-    @Column(length = 50, unique = true, nullable = false)
-    private String store_id;
+//  @Column(length = 50, unique = true, nullable = false)
+//  private String store_id;
 //  private List<Menu> store_id;
 
     // 상점명
@@ -36,6 +37,10 @@ public class Store {
     // 전화번호
     @Column(length = 255)
     private String telephone;
+
+    // 메뉴
+    @OneToMany(mappedBy = "store")
+    private List<Menu> menus = new ArrayList<Menu>();
 
     // 사용여부
     @Column
@@ -57,6 +62,7 @@ public class Store {
     public void setId(Long id) {
         this.id = id;
     }
+    */
 
     public String getStore_id() {
         return store_id;
@@ -116,8 +122,8 @@ public class Store {
     @Override
     public String toString() {
         return "Store{" +
-                "id=" + id +
-        //      ", store_id='" + store_id + '\'' +
+        //      "id=" + id +
+                ", store_id='" + store_id + '\'' +
                 ", store_name='" + store_name + '\'' +
                 ", email='" + email + '\'' +
                 ", telephone='" + telephone + '\'' +
@@ -125,7 +131,5 @@ public class Store {
                 ", regist_datetime=" + regist_datetime +
                 '}';
     }
-
-    */
 
 }

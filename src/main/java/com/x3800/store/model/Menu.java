@@ -2,6 +2,7 @@ package com.x3800.store.model;
 
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import com.x3800.store.serializer.JsonDateTimeSerializer;
+import org.hibernate.annotations.ManyToAny;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
@@ -30,9 +31,11 @@ public class Menu {
     @Column
     private Double price;
 
-    @ManyToOne(targetEntity=Store.class, fetch=FetchType.LAZY)
-    @JoinColumn(name="store_id")
-    @OnDelete(action = OnDeleteAction.CASCADE)
+//  @ManyToOne(targetEntity = Store.class, fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
+//  @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @JoinColumn(name = "store_id")
+//  @OnDelete(action = OnDeleteAction.CASCADE)
 //  @ForeignKey(name = "fk_store_menu")
     private Store store;
 
@@ -47,7 +50,6 @@ public class Menu {
     @Transient
     private final SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
 
-    /*
 
     public Long getId() {
         return id;
@@ -126,5 +128,4 @@ public class Menu {
                 '}';
     }
 
-    */
 }
