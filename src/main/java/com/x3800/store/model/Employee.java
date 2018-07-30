@@ -1,5 +1,9 @@
 package com.x3800.store.model;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.x3800.store.serializer.JsonDateSerializer;
+import com.x3800.store.serializer.JsonDateTimeSerializer;
+
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -64,6 +68,7 @@ public class Employee {
         this.employee_name = employee_name;
     }
 
+    @JsonSerialize(using = JsonDateSerializer.class)
     public Date getEmployee_date() {
         return employee_date;
     }
@@ -88,6 +93,7 @@ public class Employee {
         this.enabled = enabled;
     }
 
+    @JsonSerialize(using = JsonDateTimeSerializer.class)
     public Date getRegist_datetime() {
         return regist_datetime;
     }

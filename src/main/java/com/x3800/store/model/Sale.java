@@ -1,5 +1,8 @@
 package com.x3800.store.model;
 
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+import com.x3800.store.serializer.JsonDateTimeSerializer;
+
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -37,6 +40,7 @@ public class Sale {
         this.id = id;
     }
 
+    @JsonSerialize(using = JsonDateTimeSerializer.class)
     public Date getSale_datetime() {
         return sale_datetime;
     }
