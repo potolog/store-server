@@ -121,7 +121,7 @@ public class Menu {
                 "id=" + id +
                 ", menu_id='" + menu_id + '\'' +
                 ", menu_name='" + menu_name + '\'' +
-                ", price=" + price +
+//                ", price=" + price +
                 ", store=" + store.toString() +
                 ", enabled=" + enabled +
                 ", regist_datetime=" + regist_datetime +
